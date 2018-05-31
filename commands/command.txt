@@ -1,0 +1,61 @@
+###
+# file created by En-Ting Liu 30/05/2018
+# for FIT3036 FYP
+
+
+###
+# install protoc
+"C:/Program Files/protoc/bin/protoc" object_detection/protos/*.proto --python_out=.
+###
+
+
+###
+# generate tfrecord
+python generate_tfrecord.py --csv_input=data/train_labels.csv --output_path=data/train.record
+python generate_tfrecord.py --csv_input=data/test_labels.csv  --output_path=data/test.record
+###
+
+
+###
+# add slim package to system path
+set PYTHONPATH=C:\Users\vanes\Documents\models\research;C:\Users\vanes\Documents\models_colab\research\slim
+###
+
+
+###
+# run training train.py locally
+python train.py --logtostderr --train_dir=training/ --pipeline_config_path=training/faster_rcnn_inception_v2_coco.config
+###
+
+
+###
+# output inference graph
+python export_inference_graph.py \
+    --input_type image_tensor \
+    --pipeline_config_path training/faster_rcnn_inception_v2_coco.config \
+    --trained_checkpoint_prefix training/model.ckpt-5347 \
+    --output_directory WEAPON_DETECTION_GRAPH
+###
+
+
+###
+# run testing file eval.py
+
+    ./eval \
+        --logtostderr \
+        --checkpoint_dir=path/to/checkpoint_dir \
+        --eval_dir=path/to/eval_dir \
+        --pipeline_config_path=pipeline_config.pbtxt
+###	
+
+		
+###
+# run tensorboard, below is loading eval results
+python eval.py \ --logtostderr \ --pipeline_config_path=training\faster_rcnn_inception_v2_coco.config \ --checkpoint_dir=WEAPON_DETECTION_GRAPH \ --eval_dir=WEAPON_DETECTION_EVAL
+###
+
+
+###	
+# run tensorboard, below is loading training results. training folder downloaded from cloud training results
+tensorboard --logdir=C:\Users\vanes\Documents\models_colab\research\object_detection\training
+###	
