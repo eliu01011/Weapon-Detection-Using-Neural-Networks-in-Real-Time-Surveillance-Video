@@ -1,0 +1,14 @@
+item {
+	id: 1
+	name: 'knife'
+}
+
+item {
+	id: 2
+	name: 'gun'
+}
+
+item {
+	id: 3
+	name: 'non-weapon'
+}
