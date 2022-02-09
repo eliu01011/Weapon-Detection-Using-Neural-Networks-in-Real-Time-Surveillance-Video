@@ -8,8 +8,8 @@
 - Applied the fundamental mechanism of machine learning for supervised learning
 
 ## Background
-> This project was created for my final year project. It's about using Faster R-CNN model for detecting guns, knives and non-weapon objects (can be any non-weaponary object) in real-time video stream.
-The purpose of this project was not aiming for high accuracy, it was for myself to study the result and effect of non-weapon objects to the accuracy. In addition, this hands-on project helped me to understand the fundamental knowledge on machine learning and computer vision.
+> This project was created for my final year project. It's about using Faster R-CNN model for detecting guns, knives and non-weapon objects (can be any non-weaponry object) in a real-time video stream.
+The purpose of this project was not aim for high accuracy, it was for me to study the result and effect of non-weapon objects on the accuracy. In addition, this hands-on project helped me to understand the fundamental knowledge of machine learning and computer vision.
 
 
 
